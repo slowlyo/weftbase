@@ -1,0 +1,7 @@
+html[data-theme="light"] .ant-layout-content {
+  background: #f2f2f2;
+}
+
+html[data-theme="dark"] .ant-layout-content {
+  background: #141414;
+}

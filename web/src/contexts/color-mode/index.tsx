@@ -16,6 +16,7 @@ export const ColorModeContext = createContext<ColorModeContextType>(
   {} as ColorModeContextType
 );
 
+// 只负责亮暗切换。内容区底色写在样式表里，不改主题色。
 export const ColorModeContextProvider: React.FC<PropsWithChildren> = ({
   children,
 }) => {
@@ -31,9 +32,13 @@ export const ColorModeContextProvider: React.FC<PropsWithChildren> = ({
 
   useEffect(() => {
     window.localStorage.setItem("colorMode", mode);
+    // 内容区底色按亮暗分开，样式表要读到当前模式。
+    document.documentElement.dataset.theme = mode;
   }, [mode]);
 
+  // 点一次切到另一边，只有亮色和暗色两种。
   const setColorMode = () => {
+    // 当前是亮色才进入暗色，否则回到亮色。
     if (mode === "light") {
       setMode("dark");
     } else {
@@ -51,9 +56,9 @@ export const ColorModeContextProvider: React.FC<PropsWithChildren> = ({
       }}
     >
       <ConfigProvider
-        // you can change the theme colors here. example: ...RefineThemes.Magenta,
         theme={{
           ...RefineThemes.Blue,
+          // 暗色走暗色算法，亮色保持默认蓝。
           algorithm: mode === "light" ? defaultAlgorithm : darkAlgorithm,
         }}
       >
