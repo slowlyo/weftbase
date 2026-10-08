@@ -13,7 +13,7 @@ PocketBase 与 Refine 组成的后台。
 make dev
 ```
 
-PocketBase 后台：`admin@weftbase.local` / `weftbase-admin`。管理界面登录 `users` 里的账号。
+PocketBase 后台和管理界面使用同一账号：`admin` / `weftbase-admin`。
 
 ## 构建
 

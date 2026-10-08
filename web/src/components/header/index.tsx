@@ -16,8 +16,9 @@ const { useToken } = theme;
 
 type IUser = {
   id: number;
-  name: string;
-  avatar: string;
+  username?: string;
+  nickname?: string;
+  avatar?: string;
 };
 
 export const Header: React.FC<RefineThemedLayoutHeaderProps> = ({
@@ -52,8 +53,12 @@ export const Header: React.FC<RefineThemedLayoutHeaderProps> = ({
           defaultChecked={mode === "dark"}
         />
         <Space style={{ marginLeft: "8px" }} size="middle">
-          {user?.name && <Text strong>{user.name}</Text>}
-          {user?.avatar && <Avatar src={user?.avatar} alt={user?.name} />}
+          {(user?.nickname || user?.username) && (
+            <Text strong>{user.nickname || user.username}</Text>
+          )}
+          {user?.avatar && (
+            <Avatar src={user.avatar} alt={user.nickname || user.username} />
+          )}
         </Space>
       </Space>
     </AntdLayout.Header>
