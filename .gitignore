@@ -1,0 +1,29 @@
+# 系统与编辑器
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# 密钥与本地环境
+.env
+.env.*
+!.env.example
+
+# Go
+bin/
+vendor/
+*.exe
+*.test
+*.out
+
+# PocketBase 与 air
+pb_data/
+server/tmp/
+server/build-errors.log
+
+# 前端
+node_modules/
+dist/
+dist-ssr/
+*.local
+*.tsbuildinfo
